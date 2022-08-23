@@ -20,12 +20,12 @@ module.exports = () => {
     plugins: [
                 new HtmlWebpackPlugin({
                     template: "./index.html",
+                    title: "JATE",
                 }),
 
                 // Service Worker 
                 new InjectManifest({
-                    swSrc: "./src-sw.js",
-                    swDest: "src-sw.js",
+                    swSrc: "./src-sw.js", swDest: "src-sw.js",
                 }),
 
                 // Manifest.json file
@@ -49,8 +49,6 @@ module.exports = () => {
                 }),
               ],
 
-
-
     module: {
       rules: [
         {
@@ -60,15 +58,19 @@ module.exports = () => {
       {
           test: /\.m?js$/,
           exclude: /node_modules/,
-
           use: {
               loader: "babel-loader",
               options: {
                   presets: ["@babel/preset-env"],
-                  plugins: ["@babel/plugin-proposal-object-rest-spread", "@babel/transform-runtime"],
+                    plugins: ["@babel/plugin-proposal-object-rest-spread", "@babel/transform-runtime",
+                  ]
+                },
               },
-        
-      ],
-    },
-  };
-};
+            },
+          ],
+        },
+      }
+    }
+
+
+
